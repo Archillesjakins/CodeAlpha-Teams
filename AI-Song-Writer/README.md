@@ -173,14 +173,6 @@ app/
 
 ---
 
-## Future Improvements
-
-- Add support for dynamic time signatures and tempos.
-- Experiment with other architectures (e.g., Transformer models).
-- Extend functionality for real-time music generation.
-
----
-
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
