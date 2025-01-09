@@ -39,6 +39,11 @@
         "id": 8,
         "question": "Do you offer international shipping?",
         "answer": "Yes, we ship to many countries worldwide. Please note that international shipping rates and delivery times may vary."
-      }
+      },
+      {
+        "id": 9,
+        "question": "What are your business hours?",
+        "answer": "We are open Monday to Friday from 9 AM to 5 PM."
+    }
     ]
   

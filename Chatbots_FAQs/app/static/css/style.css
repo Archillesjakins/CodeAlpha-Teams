@@ -1,66 +1,162 @@
-body {
-        font-family: Arial, sans-serif;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-        
-.chat-container {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 20px;
-        margin-top: 20px;
-    }
-        
-.chat-messages {
-        height: 400px;
-        overflow-y: auto;
-        margin-bottom: 20px;
-        padding: 10px;
-        border: 1px solid #eee;
-        }
-        
-.message {
-        margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 5px;
-    }
-        
-.user-message {
-        background-color: #e3f2fd;
-        margin-left: 20%;
-    }
-        
-.bot-message {
-        background-color: #f5f5f5;
-        margin-right: 20%;
-    }
-        
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #121212; 
+    color: #ffffff; 
+}
+
+/* Heading */
+h1, h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Upload Section */
 .upload-section {
-        margin-bottom: 20px;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-        
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #333;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.upload-section p {
+    color: #cccccc;
+    font-size: 14px;
+}
+
+.upload-section input[type="file"] {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+    outline: none;
+    width: 80%;
+}
+
+.upload-section button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.upload-section button:hover {
+    background-color: #0056b3;
+}
+
+/* Flash Messages */
 .flash-messages {
     margin-bottom: 20px;
- }
-        
+}
+
 .flash-message {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    background-color: #fff3cd;
-    border: 1px solid #ffeeba;
-        }
-        
-input[type="text"] {
-    width: 80%;
+    background-color: #ffc107;
+    border: 1px solid #ffa000;
+    color: #000;
+}
+
+/* Chat Container */
+.chat-container {
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    background: #1e1e1e; /* Slightly lighter than body */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Chat Messages */
+.chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
     padding: 10px;
+    border: 1px solid #444;
+    background-color: #181818;
+    border-radius: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #007bff #333;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 10px;
+}
+
+/* Individual Messages */
+.message {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #f1f1f1;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    margin-left: 35%;
+    text-align: right;
+    padding-left: 0;
+}
+
+.bot-message {
+    background-color: #444;
+    margin-right: 35%;
+    text-align: left;
+    padding-right: 0;
+}
+
+/* Input Section */
+.chat-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+    outline: none;
     margin-right: 10px;
-     }
-        
+}
+
+input[type="text"]::placeholder {
+    color: #888;
+}
+
 button {
     padding: 10px 20px;
     background-color: #007bff;
@@ -68,8 +164,39 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-        }
-        
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
 button:hover {
     background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    h1, h2 {
+        font-size: 18px;
     }
+
+    .chat-messages {
+        height: 300px;
+    }
+
+    .user-message,
+    .bot-message {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 14px;
+    }
+
+    input[type="text"] {
+        margin-bottom: 10px;
+        flex: auto;
+        width: calc(100% - 20px);
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

@@ -1,5 +1,0 @@
-fastapi
-uvicorn
-deep-translator
-httpx
-python-dotenv

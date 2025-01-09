@@ -11,7 +11,7 @@ app.secret_key = os.getenv('keys')  # Required for flash messages
 # Configure upload settings
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'json', 'txt'}
-MAX_FILE_SIZE = 16 * 1024 * 1024  # 16MB max file size
+MAX_FILE_SIZE = 16 * 1024 * 1024  
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -21,11 +21,27 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # Initialize chatbot with default FAQ data
 default_faq_data = [
     {
-        'question': 'What are your business hours?',
-        'answer': 'We are open Monday to Friday from 9 AM to 5 PM.'
+        'question': 'Hello',
+        'answer': 'Hi, what can I assist you with?'
+    },
+    {
+        'question': 'Hi',
+        'answer': 'Hello! How may I help you today?'
+    },
+    {
+        'question': '1',
+        'answer': 'You can upload a JSON file with FAQ data to help me better answer your questions. The file should contain a list of question-answer pairs.'
+    },
+    {
+        'question': 'help',
+        'answer': 'You can upload a JSON file with FAQ data to help me better answer your questions. The file should contain a list of question-answer pairs.'
+    },
+    {
+        'question': 'How do I use this?',
+        'answer': 'To get started, you can upload a JSON file containing your FAQ data. The file should include questions and their corresponding answers.'
     }
 ]
-
+    
 chatbot = FAQChatbot(default_faq_data)
 
 def allowed_file(filename):

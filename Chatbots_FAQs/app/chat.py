@@ -94,11 +94,11 @@ class FAQChatbot:
         processed_faqs = []
         for faq in self.faq_data:
             try:
-                # Fixed: Assign the processed tokens to a variable
+                # Assign the processed tokens to a variable
                 processed_question = self.preprocess_text(faq['question'])
                 processed_faqs.append({
                     'original_question': faq['question'],
-                    'processed_question': processed_question,  # Fixed: Use the correct variable
+                    'processed_question': processed_question,  
                     'answer': faq['answer']
                 })
             except Exception as e:
@@ -126,7 +126,22 @@ class FAQChatbot:
             intersection = len(input_set.intersection(faq_set))
             union = len(input_set.union(faq_set))
             
-            return intersection / union if union > 0 else 0
+            # Enhanced similarity calculation
+            if union == 0:
+                return 0
+            
+            # Base Jaccard similarity
+            jaccard = intersection / union
+            
+            # Check for partial matches
+            partial_matches = sum(
+                max(len(set(w1).intersection(w2))/max(len(w1), len(w2))
+                    for w2 in faq_set)
+                for w1 in input_set
+            ) / len(input_set) if input_set else 0
+            
+            # Combine both metrics
+            return (jaccard * 0.6 + partial_matches * 0.4)
         except Exception as e:
             print(f"Warning: Error calculating similarity: {str(e)}")
             return 0
@@ -190,30 +205,3 @@ class FAQChatbot:
         except Exception as e:
             return f"I apologize, but I encountered an error: {str(e)}"
 
-# Example usage and testing
-def test_chatbot():
-    """Test the chatbot with sample data"""
-    test_data = [
-        {
-            'question': 'What are your business hours?',
-            'answer': 'We are open Monday to Friday from 9 AM to 5 PM.'
-        },
-        {
-            'question': 'How can I contact customer support?',
-            'answer': 'You can reach our customer support at 1-800-SUPPORT or email support@company.com'
-        }
-    ]
-    
-    try:
-        chatbot = FAQChatbot(test_data)
-        test_question = "When are you open?"
-        response = chatbot.generate_response(test_question)
-        print(f"Test Question: {test_question}")
-        print(f"Response: {response}")
-        return True
-    except Exception as e:
-        print(f"Test failed: {str(e)}")
-        return False
-
-if __name__ == "__main__":
-    test_chatbot()
